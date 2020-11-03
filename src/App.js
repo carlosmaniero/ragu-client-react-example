@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import { RaguComponent } from "ragu-client-react";
+
+const onFetchFail = () => alert('Error! Is hello microfrontend running?');
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  return (<div>
+    <h1>My Drawer App</h1>
+    
+    <p>Simple Hello, World</p>
+    <RaguComponent src="http://localhost:3100/components/hello-world" onFetchFail={onFetchFail}></RaguComponent>
+    <hr/>
+
+    <p>Hello with props</p>
+    <RaguComponent src="http://localhost:3100/components/hello-world-props?name=Universe With Props"></RaguComponent>
+    <hr/>
+
+    <p>Hello Pokémon with State</p>
+    <RaguComponent src="http://localhost:3100/components/hello-pokemon-state?id=1"></RaguComponent>
+  </div>);
 }
 
 export default App;
